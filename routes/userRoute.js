@@ -1,6 +1,6 @@
 const express = require('express');
 const user = express();
-const usserCtl = require('../controllers/UserCtl')
+const userCtl = require('../controllers/UserCtl')
 const multer = require('multer');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -18,6 +18,8 @@ var storage = multer.diskStorage({
 })
 
 var upload = multer({storage:storage})
-user.post('/importUser',upload.single('file'),usserCtl.importUser);
+user.post('/importUser',upload.single('file'),userCtl.importUser);
+user.get('/exportUser',userCtl.exportUser);
+
 
 module.exports = user;
